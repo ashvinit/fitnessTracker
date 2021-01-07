@@ -17,6 +17,18 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnessTracker"
 
 // routes
 app.use(require("./routes/api.js"));
+app.use(require("./routes/html.js"));
+
+// connect to mongodb
+mongoose.connect(
+    process.env.MONGODB_URI || "mongodb://localhost/fitnessTracker",
+    {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+    }
+);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
